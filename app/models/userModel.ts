@@ -1,5 +1,5 @@
 import { Document, Model, Schema, model, models } from "mongoose";
-// import { compare, genSalt, hash } from "bcrypt";
+import { compare, genSalt, hash } from "bcrypt";
 
 interface UserDocument extends Document {
   email: string;
@@ -26,26 +26,27 @@ const userSchema = new Schema<UserDocument, {}, Method>(
   { timestamps: true }
 );
 
-// userSchema.pre("save", async function (next) {
-//   try {
-//     if (!this.isModified("password")) return next();
+userSchema.pre("save", async function (next) {
+  try {
+    //this if from the mongoDB
+    if (!this.isModified("password")) return next();
 
-//     const salt = await genSalt(10);
-//     this.password = await hash(this.password, salt);
+    const salt = await genSalt(10);
+    this.password = await hash(this.password, salt);
 
-//     next();
-//   } catch (error) {
-//     throw error;
-//   }
-// });
+    next();
+  } catch (error) {
+    throw error;
+  }
+});
 
-// userSchema.methods.comparePassword = async function (password) {
-//   try {
-//     return await compare(password, this.password);
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+userSchema.methods.comparePassword = async function (password) {
+  try {
+    return await compare(password, this.password);
+  } catch (error) {
+    throw error;
+  }
+};
 
 const UserModel = models.User || model("User", userSchema);
 

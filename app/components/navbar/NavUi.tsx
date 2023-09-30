@@ -43,7 +43,7 @@ export const menuItems = [
   },
 ];
 
-export default function NavUI({ cartItemsCount, avatar }: Props) {
+export default function NavUi({ cartItemsCount, avatar }: Props) {
   const [open, setOpen] = React.useState(false);
   const { loading, loggedIn } = useAuth();
 

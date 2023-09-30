@@ -2,12 +2,14 @@
 import React from "react";
 import AuthFormContainer from "@components/AuthFormContainer";
 import { Button, Input } from "@material-tailwind/react";
+import type { InputProps } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { filterFormikErrors } from "@/app/utils/formikHelpers";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { successMassage } from "@/app/utils/message";
 // import { signIn } from "next-auth/react";
 
 const validationSchema = yup.object().shape({
@@ -38,8 +40,8 @@ export default function SignUp() {
         body: JSON.stringify(values),
       }).then(async (res) => {
         if (res.ok) {
-          const result = await res.json();
-          console.log(result);
+          const { message } = await res.json();
+          successMassage(message);
         }
         action.setSubmitting(false);
       });
@@ -77,6 +79,7 @@ export default function SignUp() {
         onChange={handleChange}
         value={name}
         error={error("name")}
+        crossOrigin
       />
       <Input
         name="email"
@@ -85,6 +88,7 @@ export default function SignUp() {
         onChange={handleChange}
         value={email}
         error={error("email")}
+        crossOrigin
       />
       <Input
         name="password"
@@ -94,6 +98,7 @@ export default function SignUp() {
         onBlur={handleBlur}
         value={password}
         error={error("password")}
+        crossOrigin
       />
       <Button disabled={isSubmitting} type="submit" className="w-full">
         Sign up
