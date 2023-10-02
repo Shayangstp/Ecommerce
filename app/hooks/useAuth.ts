@@ -1,4 +1,4 @@
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { SessionUserProfile } from "../types";
 
 interface Auth {
@@ -8,22 +8,15 @@ interface Auth {
   profile?: SessionUserProfile | null;
 }
 
-// export default function useAuth(): Auth {
-//   const session = useSession();
-//   const user = session.data?.user;
-
-//   return {
-//     loading: session.status === "loading",
-//     loggedIn: session.status === "authenticated",
-//     isAdmin: user?.role === "admin",
-//     profile: user,
-//   };
-// }
-
 export default function useAuth(): Auth {
+  const session = useSession();
+  const user = session.data?.user;
+  console.log(session);
+
   return {
-    loading: false,
-    loggedIn: false,
-    isAdmin: false,
+    loading: session.status === "loading",
+    loggedIn: session.status === "authenticated",
+    isAdmin: user?.role === "admin",
+    profile: user,
   };
 }
