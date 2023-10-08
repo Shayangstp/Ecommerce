@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { filterFormikErrors } from "@/app/utils/formikHelpers";
 import Link from "next/link";
-import { successMassage } from "@/app/utils/message";
+import { successMessage } from "@/app/utils/message";
 // import { signIn } from "next-auth/react";
 
 const validationSchema = yup.object().shape({
@@ -40,7 +40,7 @@ export default function SignUp() {
       }).then(async (res) => {
         if (res.ok) {
           const { message } = await res.json();
-          successMassage(message);
+          successMessage(message);
         }
         action.setSubmitting(false);
       });

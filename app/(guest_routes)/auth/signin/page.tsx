@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import Link from "next/link";
 import * as yup from "yup";
 import { signIn } from "next-auth/react";
-import { successMassage, errorMassage } from "@/app/utils/message";
+import { successMessage, errorMessage } from "@/app/utils/message";
 import { useRouter } from "next/navigation";
 
 const validationSchema = yup.object().shape({
@@ -41,7 +41,7 @@ export default function SignIn() {
 
       //get this from docs
       if (signInRes?.error === "CredentialsSignin") {
-        errorMassage("Email/Password mismatch!");
+        errorMessage("Email/Password mismatch!");
       }
 
       if (!signInRes?.error) {

@@ -2,7 +2,7 @@
 
 import { notFound, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { errorMassage, successMassage } from "../utils/message";
+import { errorMessage, successMessage } from "../utils/message";
 
 interface Props {
   searchParams: { token: string; userId: string };
@@ -25,12 +25,12 @@ export default function Verify(props: Props) {
 
       if (res.ok) {
         // success
-        successMassage(message);
+        successMessage(message);
         console.log(message);
       }
 
       if (!res.ok && error) {
-        errorMassage(error);
+        errorMessage(error);
         console.log(error);
       }
 

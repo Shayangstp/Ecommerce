@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 
-export const errorMassage = (message: string) => {
+export const errorMessage = (message: string) => {
   toast.error(message, {
     style: {
       fontSize: "16px",
@@ -11,7 +11,7 @@ export const errorMassage = (message: string) => {
   });
 };
 
-export const successMassage = (message: string) => {
+export const successMessage = (message: string) => {
   toast.success(message, {
     style: {
       fontSize: "16px",
