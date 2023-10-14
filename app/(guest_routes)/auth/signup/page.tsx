@@ -8,8 +8,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { filterFormikErrors } from "@/app/utils/formikHelpers";
 import Link from "next/link";
-import { successMessage } from "@/app/utils/message";
-// import { signIn } from "next-auth/react";
+import { errorMessage, successMessage } from "@/app/utils/message";
+import { signIn } from "next-auth/react";
 
 const validationSchema = yup.object().shape({
   name: yup.string().required("Name is required!"),
@@ -34,28 +34,23 @@ export default function SignUp() {
     validationSchema,
     onSubmit: async (values, action) => {
       action.setSubmitting(true);
-      await fetch("/api/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         body: JSON.stringify(values),
-      }).then(async (res) => {
-        if (res.ok) {
-          const { message } = await res.json();
-          successMessage(message);
-        }
-        action.setSubmitting(false);
       });
-      // const { message, error } = (await res.json()) as {
-      //   message: string;
-      //   error: string;
-      // };
-      // if (res.ok) {
-      //   toast.success(message);
-      //   // await signIn("credentials", { email, password });
-      // }
-      // if (!res.ok && error) {
-      //   toast.error(error);
-      // }
-      // action.setSubmitting(false);
+      const { message, error } = (await res.json()) as {
+        message: string;
+        error: string;
+      };
+      if (res.ok) {
+        successMessage(message);
+        //this is also when sign up the app automaticly sign in 
+        await signIn("credentials", { email, password });
+      }
+      if (!res.ok && error) {
+        errorMessage(error);
+      }
+      action.setSubmitting(false);
     },
   });
 

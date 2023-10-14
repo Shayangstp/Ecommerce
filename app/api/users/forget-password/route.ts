@@ -3,9 +3,8 @@ import UserModel from "@/app/models/userModel";
 import { ForgetPasswordRequest } from "@/app/types";
 import { NextResponse } from "next/server";
 import crypto from "crypto";
-import nodemailer from "nodemailer";
 import startDb from "@/app/lib/db";
-// import { sendEmail } from "@/app/lib/email";
+import { sendEmail } from "@/app/lib/email";
 
 export const POST = async (req: Request) => {
   try {
@@ -30,26 +29,11 @@ export const POST = async (req: Request) => {
     // send the link to the given email
     const resetPassLink = `${process.env.PASSWORD_RESET_URL}?token=${token}&userId=${user._id}`;
 
-    let transport = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "g.shayan5529@gmail.com",
-        pass: process.env.NODE_MAILER,
-      },
+    await sendEmail({
+      profile: { name: user.name, email: user.email },
+      subject: "forget-password",
+      linkUrl: resetPassLink,
     });
-
-    await transport.sendMail({
-      from: "g.shayan5529@gmail.com",
-      to: user.email,
-      subject: "Verify your email",
-      html: `<h1>click on this link to reset your password  <a href="${resetPassLink}">click</a></h1>`,
-    });
-
-    // await sendEmail({
-    //   profile: { name: user.name, email: user.email },
-    //   subject: "forget-password",
-    //   linkUrl: resetPassLink,
-    // });
 
     return NextResponse.json({ message: "Please check your email." });
   } catch (error) {

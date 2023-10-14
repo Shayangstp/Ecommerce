@@ -25,6 +25,8 @@ interface Props {
   token: string;
 }
 
+
+//get the token and userId from route 
 export default function UpdatePassword({ token, userId }: Props) {
   const router = useRouter();
   const {
