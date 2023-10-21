@@ -8,5 +8,9 @@ interface Props {
 }
 
 export default function AuthSession({ children }: Props) {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <div>
+      <SessionProvider>{children}</SessionProvider>{" "}
+    </div>
+  );
 }

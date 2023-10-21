@@ -18,12 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <AuthSession>
-      <html lang="en">
+    <html lang="en">
+      <body className={inter.className}>
         <Toaster position="top-center" />
-        <Navbar />
-        <body className={inter.className}>{children}</body>
-      </html>
-    </AuthSession>
+        <AuthSession>{children}</AuthSession>
+      </body>
+    </html>
   );
 }

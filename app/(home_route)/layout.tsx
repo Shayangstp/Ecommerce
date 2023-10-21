@@ -7,13 +7,9 @@ interface Props {
   children: ReactNode;
 }
 
-export default async function PrivateLayout({ children }: Props) {
-  const session = await auth();
-  //if is not authenticated
-  if (!session) return redirect("/auth/signin");
-
+export default async function HomeLayout({ children }: Props) {
   return (
-    <div className="max-w-screen-xl mx-auto p-4 xl:p-0">
+    <div className="max-w-screen-xl mx-auto xl:p-0 p-4">
       <Navbar />
       {children}
     </div>
