@@ -48,6 +48,7 @@ const defaultValue = {
 
 export default function ProductForm(props: Props) {
   const { onSubmit, onImageRemove, initialValue } = props;
+  //use transition make the search ok not blocking ui
   const [isPending, startTransition] = useTransition();
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [thumbnail, setThumbnail] = useState<File>();
@@ -91,9 +92,12 @@ export default function ProductForm(props: Props) {
       onImageRemove && onImageRemove(imageToRemove);
     } else {
       // if this image is from local state we want to update local state
+      //the file index diffrence is the diffrence of the local image that arent push to the cloud and the images are pushed 
       const fileIndexDifference =
         productImagesSource.length - imageFiles.length;
+      
       const indexToRemove = index - fileIndexDifference;
+      //we use the _ for the i be second parameter 
       const newImageFiles = imageFiles.filter((_, i) => {
         if (i !== indexToRemove) return true;
       });
@@ -153,6 +157,7 @@ export default function ProductForm(props: Props) {
 
       <form
         action={() =>
+          //we use this transition when the product is creating the ui be good 
           startTransition(async () => {
             await onSubmit({ ...productInfo, images: imageFiles, thumbnail });
           })

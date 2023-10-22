@@ -8,6 +8,7 @@ const fetchProducts = async (
   pageNo: number,
   perPage: number
 ): Promise<Product[]> => {
+  //this is will skip the product that are not in the page 
   const skipCount = (pageNo - 1) * perPage;
 
   await startDb();

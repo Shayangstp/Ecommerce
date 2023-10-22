@@ -6,7 +6,7 @@ import { newProductInfoSchema } from "@/app/utils/validationSchema";
 import React from "react";
 import { errorMessage } from "@/app/utils/message";
 import { ValidationError } from "yup";
-// import { createProduct } from "../action";
+import { createProduct } from "../action";
 import { useRouter } from "next/navigation";
 
 export default function Create() {
@@ -28,15 +28,16 @@ export default function Create() {
         productImages = await Promise.all(uploadPromise);
       }
 
-      // await createProduct({
-      //   ...values,
-      //   price: {
-      //     base: values.mrp,
-      //     discounted: values.salePrice,
-      //   },
-      //   thumbnail: thumbnailRes,
-      //   images: productImages,
-      // });
+      await createProduct({
+        ...values,
+        price: {
+          base: values.mrp,
+          discounted: values.salePrice,
+        },
+        thumbnail: thumbnailRes,
+        images: productImages,
+      });
+      
       router.refresh();
       router.push("/products");
     } catch (error) {

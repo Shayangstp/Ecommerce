@@ -27,6 +27,7 @@ const commonSchema = {
 };
 
 // Define the validation schema
+//create validation schema
 export const newProductInfoSchema = Yup.object().shape({
   ...commonSchema,
   thumbnail: Yup.mixed()
@@ -35,7 +36,7 @@ export const newProductInfoSchema = Yup.object().shape({
       fileValidator(file as File)
     ),
 });
-
+//update the product validation
 export const updateProductInfoSchema = Yup.object().shape({
   ...commonSchema,
 });

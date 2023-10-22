@@ -12,6 +12,7 @@ cloudinary.config({
   secure: true,
 });
 
+//for helper.ts we make it we get env from here
 export const getCloudConfig = async () => {
   return {
     name: process.env.CLOUD_NAME!,
@@ -19,9 +20,11 @@ export const getCloudConfig = async () => {
   };
 };
 
-// generate our cloud signature you have to use it as async await 
+// when we use action we have to use it as async if we dont use any promises
 export const getCloudSignature = async () => {
+  //we ! for undefined | string
   const secret = cloudinary.config().api_secret!;
+  //we want it miliseconds
   const timestamp = Math.round(new Date().getTime() / 1000);
   const signature = cloudinary.utils.api_sign_request({ timestamp }, secret);
 
@@ -38,6 +41,7 @@ export const createProduct = async (info: NewProduct) => {
   }
 };
 
+//remove img from cloud
 export const removeImageFromCloud = async (publicId: string) => {
   await cloudinary.uploader.destroy(publicId);
 };
