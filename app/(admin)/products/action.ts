@@ -1,5 +1,7 @@
 "use server";
 
+//why we use this action
+
 import startDb from "@/app/lib/db";
 import ProductModel, { NewProduct } from "@/app/models/productModel";
 import { ProductToUpdate } from "@/app/types";

@@ -82,6 +82,7 @@ export interface ProductToUpdate {
     base: number;
     discounted: number;
   };
+  //bc can be change or not and images too 
   thumbnail?: { url: string; id: string };
   images?: { url: string; id: string }[];
 }

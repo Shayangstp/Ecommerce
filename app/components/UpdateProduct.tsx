@@ -66,6 +66,7 @@ export default function UpdateProduct({ product }: Props) {
         const uploadPromise = images.map(async (imgFile) => {
           return await uploadImage(imgFile);
         });
+        //this wait for all the images to upload and then code willl run again 
         dataToUpdate.images = await Promise.all(uploadPromise);
       }
 
