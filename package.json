@@ -33,6 +33,7 @@
     "react-horizontal-scrolling-menu": "^4.1.1",
     "react-hot-toast": "^2.4.1",
     "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "tailwindcss": "3.3.3",
     "truncate": "^3.0.0",
     "typescript": "5.2.2",
