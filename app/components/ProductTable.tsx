@@ -13,6 +13,7 @@ import truncate from "truncate";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import SearchForm from "@components/SearchForm";
+import { formatPrice } from "../utils/helper";
 
 export interface Product {
   id: string;
@@ -27,15 +28,6 @@ export interface Product {
   category: string;
   quantity: number;
 }
-
-const formatPrice = (amount: number) => {
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-
-  return formatter.format(amount);
-};
 
 const TABLE_HEAD = [
   "Product",

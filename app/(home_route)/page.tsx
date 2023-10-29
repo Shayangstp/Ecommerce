@@ -36,7 +36,7 @@ const fetchLatestProducts = async () => {
       rating: product.rating,
     };
   });
-
+  //conver the the data as object into the string
   return JSON.stringify(productList);
 };
 
@@ -57,6 +57,7 @@ const fetchFeaturedProducts = async () => {
 
 export default async function Home() {
   const latestProducts = await fetchLatestProducts();
+  //convert string into the object again
   const parsedProducts = JSON.parse(latestProducts) as LatestProduct[];
   const featuredProducts = await fetchFeaturedProducts();
 
