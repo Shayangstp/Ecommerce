@@ -1,7 +1,5 @@
 "use server";
 
-//why we use this action
-
 import startDb from "@/app/lib/db";
 import ProductModel, { NewProduct } from "@/app/models/productModel";
 import { ProductToUpdate } from "@/app/types";
@@ -14,7 +12,6 @@ cloudinary.config({
   secure: true,
 });
 
-//for helper.ts we make it we get env from here
 export const getCloudConfig = async () => {
   return {
     name: process.env.CLOUD_NAME!,
@@ -22,11 +19,9 @@ export const getCloudConfig = async () => {
   };
 };
 
-// when we use action we have to use it as async if we dont use any promises
+// generate our cloud signature
 export const getCloudSignature = async () => {
-  //we ! for undefined | string
   const secret = cloudinary.config().api_secret!;
-  //we want it miliseconds
   const timestamp = Math.round(new Date().getTime() / 1000);
   const signature = cloudinary.utils.api_sign_request({ timestamp }, secret);
 
@@ -43,7 +38,6 @@ export const createProduct = async (info: NewProduct) => {
   }
 };
 
-//remove img from cloud
 export const removeImageFromCloud = async (publicId: string) => {
   await cloudinary.uploader.destroy(publicId);
 };
