@@ -3,7 +3,7 @@
 import startDb from "@/app/lib/db";
 import FeaturedProductModel from "@/app/models/featuredProduct";
 import { FeaturedProductForUpdate, NewFeaturedProduct } from "@/app/types";
-import { removeImageFromCloud } from "../action";
+// import { removeImageFromCloud } from "../action";
 
 export const createFeaturedProduct = async (info: NewFeaturedProduct) => {
   try {
@@ -31,7 +31,7 @@ export const deleteFeaturedProduct = async (id: string) => {
     await startDb();
     const product = await FeaturedProductModel.findByIdAndDelete(id);
     if (product) {
-      await removeImageFromCloud(product.banner.id);
+      // await removeImageFromCloud(product.banner.id);
     }
   } catch (error) {
     throw error;
