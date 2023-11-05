@@ -7,6 +7,8 @@ import { redirect } from "next/navigation";
 import startDb from "@/app/lib/db";
 import UserModel from "@/app/models/userModel";
 
+//in here bc we want to fetch cartItems we want this component be server component
+
 const fetchUserProfile = async () => {
   const session = await auth();
   if (!session) return null;
@@ -31,6 +33,8 @@ const getCartItemsCount = async () => {
     const userId = session.user.id;
 
     const cart = await CartModel.aggregate([
+      //userId needs to be objectId ad we have to convert it 
+    //for testing this aggregate we can store the whole aggregate to the console 
       { $match: { userId: new Types.ObjectId(userId) } },
       { $unwind: "$items" },
       {
