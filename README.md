@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+hi this is my ecommerce project the latest project i've made
 
-## Getting Started
+technologies used in this app:
+NextJs , typeScript , mongoDB , tailwindCss , material tailwind , cloudinary for upload images
 
-First, run the development server:
+feature of this project :
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1-athentication (jwt , Next-auth , next-api-route)
+2-admin pannel (manage product and sale)
+3-group product search product by category
+4-add to cart (multiple)
+5-favorite product
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+onToDo :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1-shaparak for payment
+2-complete the admin pannel
+3-add star
+4-search from amazon ( use amazon api)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+the database as to day is on my local but i do the atles for this project realy soon
+but you can install mangoCompas and mongoDb on your device
 
-## Learn More
+-download project from my github account
+-open in vsCode
+-terminal ---> npm i
+-npm run dev  
+-localhost:7777
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-now for database open mongoCompass copy the url of your compass in this file of the project -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+lib/db.ts
 
-## Deploy on Vercel
+replace url constant value with your ur
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const url = "your url string"

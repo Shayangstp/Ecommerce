@@ -105,8 +105,8 @@ export default function SignIn() {
           use this account for testing the app ( you have role of the admin too)
         </p>
         <ul className="text-[12px]">
-          <li>username : test@gmail.com</li>
-          <li>password : Test123456</li>
+          <li>username : shayan.testing1373@gmail.com</li>
+          <li>password : Testing.1373</li>
         </ul>
       </div>
     </AuthFormContainer>

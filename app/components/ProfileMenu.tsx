@@ -40,7 +40,7 @@ export default function ProfileMenu({ menuItems, avatar }: Props) {
             size="sm"
             alt="candice wu"
             className="border border-blue-500 p-0.5"
-            src={avatar || "/avatar.png"}
+            src={avatar || "avatar/avatar.jpg"}
           />
           <ChevronDownIcon
             strokeWidth={2.5}
@@ -90,3 +90,4 @@ export default function ProfileMenu({ menuItems, avatar }: Props) {
     </Menu>
   );
 }
+
