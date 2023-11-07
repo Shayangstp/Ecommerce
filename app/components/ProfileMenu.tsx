@@ -67,7 +67,7 @@ export default function ProfileMenu({ menuItems, avatar }: Props) {
         })}
 
         {isAdmin ? (
-          <Link href="/dashboard" className="outline-none">
+          <Link href="/dashboard" className="outline-none" target="_blank">
             <MenuItem
               onClick={closeMenu}
               className="flex items-center gap-2 rounded"

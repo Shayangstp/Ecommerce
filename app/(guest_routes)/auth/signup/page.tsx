@@ -44,7 +44,7 @@ export default function SignUp() {
       };
       if (res.ok) {
         successMessage(message);
-        //this is also when sign up the app automaticly sign in 
+        //this is also when sign up the app automaticly sign in
         await signIn("credentials", { email, password });
       }
       if (!res.ok && error) {

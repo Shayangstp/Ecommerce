@@ -47,7 +47,7 @@ export function MobileNav({ open, onClose, menuItems }: Props) {
           })}
 
           {isAdmin ? (
-            <Link href="/dashboard">
+            <Link href="/dashboard" target="_blank">
               <ListItem onClick={onClose}>
                 <ListItemPrefix>
                   <RectangleGroupIcon className="h-4 w-4" />

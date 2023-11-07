@@ -100,6 +100,15 @@ export default function SignIn() {
           );
         })}
       </div>
+      <div id="test-Account">
+        <p className="text-[10px] font-bold">
+          use this account for testing the app ( you have role of the admin too)
+        </p>
+        <ul className="text-[12px]">
+          <li>username : test@gmail.com</li>
+          <li>password : Test123456</li>
+        </ul>
+      </div>
     </AuthFormContainer>
   );
 }
