@@ -1,8 +1,8 @@
 import EmailVerificationBanner from "@/app/components/EmailVerificationBanner";
 // import OrderListPublic, { Orders } from "@/app/components/OrderListPublic";
-// import ProfileForm from "@/app/components/ProfileForm";
+import ProfileForm from "@/app/components/ProfileForm";
 import startDb from "@/app/lib/db";
-// import OrderModel from "@/app/models/orderModel";
+import OrderModel from "@/app/models/orderModel";
 import UserModel from "@/app/models/userModel";
 import { auth } from "@/auth";
 import Link from "next/link";
@@ -17,9 +17,9 @@ const fetchLatestOrder = async () => {
   }
 
   await startDb();
-  // const orders = await OrderModel.find({ userId: session.user.id })
-  //   .sort("-createdAt")
-  //   .limit(1);
+  const orders = await OrderModel.find({ userId: session.user.id })
+    .sort("-createdAt")
+    .limit(1);
   // const result: Orders[] = orders.map((order) => {
   //   return {
   //     id: order._id.toString(),
@@ -59,12 +59,12 @@ export default async function Profile() {
       <EmailVerificationBanner verified={profile.verified} id={profile.id} />
       <div className="flex py-4 space-y-4">
         <div className="border-r border-gray-700 p-4 space-y-4">
-          {/* <ProfileForm
+          <ProfileForm
             id={profile.id}
             email={profile.email}
             name={profile.name}
             avatar={profile.avatar}
-          /> */}
+          />
         </div>
 
         <div className="p-4 flex-1">
