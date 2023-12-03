@@ -23,6 +23,7 @@ const settings: Settings = {
 };
 
 // Pixel GIF code adapted from https://stackoverflow.com/a/33919020/266535
+//this is the ability nextJs give for image component and we can use it on the image with high quality
 const keyStr =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
