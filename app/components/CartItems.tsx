@@ -45,7 +45,7 @@ const CartItems: React.FC<CartItemsProps> = ({
     if (!res.ok) {
       errorMessage(error);
     } else {
-      // open the checkout url
+      // open the checkout url this is from where we wan to checkout 
       window.location.href = url;
     }
     setBusy(false);

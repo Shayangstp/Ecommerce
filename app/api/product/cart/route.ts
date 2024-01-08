@@ -15,6 +15,8 @@ export const POST = async (req: Request) => {
         { status: 401 }
       );
 
+  
+
     const { productId, quantity } = (await req.json()) as NewCartRequest;
 
     if (!isValidObjectId(productId) || isNaN(quantity))
